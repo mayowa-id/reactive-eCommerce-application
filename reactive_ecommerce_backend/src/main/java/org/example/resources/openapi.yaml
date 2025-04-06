@@ -1,0 +1,102 @@
+openapi: 3.0.0
+info:
+  title: VertxMart Product API
+  version: 1.0.0
+paths:
+  /products:
+    get:
+      summary: Get all products
+      operationId: getAllProducts
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Add a product
+      operationId: addProduct
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '201':
+          description: Product created
+  /products/{id}:
+    get:
+      summary: Get product by ID
+      operationId: getProductById
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Product not found
+    put:
+      summary: Update product
+      operationId: updateProduct
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '200':
+          description: Updated
+    delete:
+      summary: Delete product
+      operationId: deleteProduct
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Deleted
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        name:
+          type: string
+        price:
+          type: number
+          format: float
+  /products:
+    get:
+      operationId: getAllProducts
+      responses:
+        '200':
+          description: Returns all products
+    post:
+      operationId: addProduct
+      responses:
+        '201':
+          description: Product created
+  /products/{id}:
+    get:
+      operationId: getProductById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Returns a single product
