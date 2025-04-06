@@ -1,4 +1,3 @@
-# reactive-eCommerce-application
 
 # Vert.x Product Service API 
 I implemented a simple RESTful API for managing products using Vert.x backend, MongoDB for product storage, input validation, CRUD operations and Swagger for API documentation. 
